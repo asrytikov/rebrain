@@ -38,7 +38,7 @@ resource "yandex_compute_instance" "vm-1" {
     memory = 4
   }
 
-boot_disk {
+  boot_disk {
     initialize_params {
         image_id = data.yandex_compute_image.foo-image.id
     }
@@ -49,8 +49,9 @@ boot_disk {
   }
 
   metadata = {
-    ssh-keys = "yc-user:${file("~/.ssh/yc-user.pub")}"
-  }
+    ssh-keys = "ubuntu:${file("~/.ssh/ubuntu.pub")}"
+  }  
+  
 }
 
 output "default_instance_public_ip" {
